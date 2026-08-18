@@ -11,6 +11,8 @@ namespace table_fabric {
 struct Point {
     std::string name;
     double x, y, z;
+    
+    /// @brief C++20: spaceship operator автоматически генерирует все операторы сравнения.
     auto operator<=>(const Point&) const = default;
 };
 
@@ -25,7 +27,7 @@ struct hash<table_fabric::Point> {
         const size_t h2 = std::hash<double>{}(p.x);
         const size_t h3 = std::hash<double>{}(p.y);
         const size_t h4 = std::hash<double>{}(p.z);
-        
+
         size_t seed = h1;
         seed ^= h2 + 0x9e3779b9 + (seed << 6) + (seed >> 2);
         seed ^= h3 + 0x9e3779b9 + (seed << 6) + (seed >> 2);
