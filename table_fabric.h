@@ -5,6 +5,8 @@
 #ifndef TABLE_VIEW_TABLE_FABRIC_H
 #define TABLE_VIEW_TABLE_FABRIC_H
 
+#include <memory>
+
 class Table;
 
 namespace table_fabric {
