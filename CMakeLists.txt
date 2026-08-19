@@ -8,7 +8,8 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 option(BUILD_TESTS "Build unit tests" ON)
 option(BUILD_EXAMPLES "Build examples" ON)
 
-add_subdirectory(src)
+add_library(table_lib INTERFACE)
+target_include_directories(table_lib INTERFACE ${PROJECT_SOURCE_DIR})
 
 if(BUILD_TESTS)
     enable_testing()
