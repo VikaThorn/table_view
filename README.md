@@ -45,3 +45,38 @@ std::vector<std::array<std::string, 5>> array_type;
 const auto table3 = create_table(array_type); // table3 != nullptr
 const size_t row_count = table3->row_count(); // row_count == array_type.size()
 ```
+
+## Структура проекта
+
+- `table.h` — абстрактный интерфейс `Table`
+- `table_fabric.h` — фабрика `create_table`
+- `point.h` — структура `Point` и поддержка хеширования
+- `concepts.h` — C++20 концепты для определения поставщиков
+- `point_table.h` — реализация `Table` для контейнеров `Point`
+- `array_table.h` — реализация `Table` для `std::vector<std::array<Type, N>>`
+- `tests/` — тесты на Catch2
+- `examples/main.cpp` — демонстрация работы фабрики
+
+## Сборка и запуск
+
+Проект использует CMake (версия 3.20+). Требуется компилятор с поддержкой C++20.
+
+### Конфигурация и сборка
+
+```bash
+cmake -B build
+cmake --build build --config Release
+```
+
+### Запуск примера
+
+```bash
+./build/examples/Release/example
+```
+
+### Запуск тестов
+
+```bash
+ctest --test-dir build -C Release --output-on-failure
+```
+Проект включает 28 тестов, покрывающих все компоненты: концепты, PointTable, ArrayTable и фабрику create_table.
